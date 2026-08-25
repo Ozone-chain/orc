@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "npm --prefix packages/orc run build",
-    "test": "npm --prefix packages/orc test",
+    "test": "npm run build && npm --prefix packages/orc test",
     "build:contracts": "forge build",
     "test:contracts": "forge test",
     "test:compliance": "forge test --match-contract ORC20ComplianceTest -vv",
