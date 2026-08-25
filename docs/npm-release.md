@@ -1,6 +1,6 @@
-# NPM Package Release Guide (`@ozonechain/orc`)
+# NPM Package Release Guide (`@ozonechain_orc/orc`)
 
-This document details the standardized release process and best practices for publishing official updates to the **`@ozonechain/orc`** developer package.
+This document details the standardized release process and best practices for publishing official updates to the **`@ozonechain_orc/orc`** developer package.
 
 ---
 
@@ -13,7 +13,7 @@ The repository follows **Semantic Versioning (SemVer)** for the developer SDK (`
 - **Major (`x.0.0`)**: Breaking changes in SDK exports, ABI restructuring, or minimum Node.js runtime bumps.
 
 > [!NOTE]
-> The **NPM package version** (`@ozonechain/orc`) and the **ORC specification versions** (e.g., ORC-1, ORC-20) are managed as independent concepts. Updating the TypeScript package does not modify official finalized standards documents unless a formal RFC amendment process has completed.
+> The **NPM package version** (`@ozonechain_orc/orc`) and the **ORC specification versions** (e.g., ORC-1, ORC-20) are managed as independent concepts. Updating the TypeScript package does not modify official finalized standards documents unless a formal RFC amendment process has completed.
 
 ---
 
@@ -60,7 +60,7 @@ cd ../..
 
 Expected output:
 ```text
-npm notice package: @ozonechain/orc@1.0.0
+npm notice package: @ozonechain_orc/orc@1.0.0
 npm notice Tarball Contents
 npm notice 1.1kB LICENSE
 npm notice 4.0kB README.md
@@ -72,8 +72,8 @@ npm notice 1.2kB package.json
 
 ```bash
 git add .
-git commit -m "release: @ozonechain/orc v1.0.0"
-git tag -a v1.0.0 -m "Release @ozonechain/orc v1.0.0"
+git commit -m "release: @ozonechain_orc/orc v1.0.0"
+git tag -a v1.0.0 -m "Release @ozonechain_orc/orc v1.0.0"
 ```
 
 ### Step 5: Push Branch and Tag
@@ -93,7 +93,7 @@ When a version tag (`v*.*.*`) is pushed to GitHub, the workflow [`.github/workfl
 3. Install dependencies and run test suite.
 4. Compile TypeScript to `dist/`.
 5. Execute `npm pack --dry-run` validation.
-6. Publish to npm registry under `@ozonechain/orc` with `--access public` and `--provenance` cryptographic attestation.
+6. Publish to npm registry under `@ozonechain_orc/orc` with `--access public` and `--provenance` cryptographic attestation.
 
 ### Required Secrets
 Ensure the repository has configured the GitHub secret:
@@ -108,8 +108,8 @@ Test the published package in an external environment:
 ```bash
 mkdir /tmp/verify-orc-pkg && cd /tmp/verify-orc-pkg
 npm init -y
-npm install @ozonechain/orc@latest
+npm install @ozonechain_orc/orc@latest
 
 # Run verification one-liner
-node -e "const { ORC20_ABI, ORC_STANDARD, OZONE_CHAIN_MAINNET } = require('@ozonechain/orc'); console.log('Verified:', ORC_STANDARD.name, 'Chain ID:', OZONE_CHAIN_MAINNET.id);"
+node -e "const { ORC20_ABI, ORC_STANDARD, OZONE_CHAIN_MAINNET } = require('@ozonechain_orc/orc'); console.log('Verified:', ORC_STANDARD.name, 'Chain ID:', OZONE_CHAIN_MAINNET.id);"
 ```

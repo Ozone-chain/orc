@@ -2,7 +2,7 @@
 
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-blue.svg)](LICENSE)
 [![Code License: MIT](https://img.shields.io/badge/Code_License-MIT-green.svg)](LICENSE)
-[![npm version](https://img.shields.io/npm/v/@ozonechain/orc.svg)](https://www.npmjs.com/package/@ozonechain/orc)
+[![npm version](https://img.shields.io/npm/v/@ozonechain_orc/orc.svg)](https://www.npmjs.com/package/@ozonechain_orc/orc)
 [![Ozone Chain EVM](https://img.shields.io/badge/Ozone_Chain-EVM_Compatible-blueviolet)](https://ozonechain.io/)
 [![Status](https://img.shields.io/badge/Status-Active_Standards-success)](standards/)
 
@@ -30,25 +30,25 @@ ORC Repository
 └── 2. Official Developer Package
     └── packages/orc/
         ▼
-        @ozonechain/orc (npm package: ABIs, types, constants & helpers)
+        @ozonechain_orc/orc (npm package: ABIs, types, constants & helpers)
 ```
 
 ---
 
-## JavaScript / TypeScript SDK (`@ozonechain/orc`)
+## JavaScript / TypeScript SDK (`@ozonechain_orc/orc`)
 
 The official developer package exposes canonical ABIs, TypeScript type definitions, and chain metadata for building dApps, indexers, wallets, and scripts on Ozone Chain.
 
 ### Installation
 
 ```bash
-npm install @ozonechain/orc
+npm install @ozonechain_orc/orc
 ```
 
 ### Quick Usage
 
 ```typescript
-import { ORC20_ABI, OZONE_CHAIN_MAINNET, ORC_STANDARD } from "@ozonechain/orc";
+import { ORC20_ABI, OZONE_CHAIN_MAINNET, ORC_STANDARD } from "@ozonechain_orc/orc";
 import { createPublicClient, http } from "viem";
 
 const client = createPublicClient({
@@ -123,7 +123,7 @@ ORC/
 │   └── npm-release.md           # Package release process & guide
 │
 └── packages/                    # Official npm packages monorepo workspace
-    └── orc/                     # @ozonechain/orc developer SDK
+    └── orc/                     # @ozonechain_orc/orc developer SDK
         ├── src/                 # TypeScript source code (ABIs, types, constants)
         ├── package.json         # Package configuration & exports
         ├── tsconfig.json        # TypeScript compiler options
@@ -181,7 +181,7 @@ forge test --match-contract ORC20BenchmarkTest --gas-report
 # Install dependencies
 npm install
 
-# Build @ozonechain/orc TypeScript SDK
+# Build @ozonechain_orc/orc TypeScript SDK
 npm run build
 
 # Run SDK unit tests
@@ -222,4 +222,4 @@ Smart contract and tooling security is paramount in the Ozone Chain ecosystem. I
 - **Ozone Chain Website**: [https://ozonechain.io/](https://ozonechain.io/)
 - **Ozone Chain Explorer**: [https://ozonescan.io/](https://ozonescan.io/)
 - **Ozone Chain GitHub**: [https://github.com/Ozone-chain](https://github.com/Ozone-chain)
-- **NPM Package**: [https://www.npmjs.com/package/@ozonechain/orc](https://www.npmjs.com/package/@ozonechain/orc)
+- **NPM Package**: [https://www.npmjs.com/package/@ozonechain_orc/orc](https://www.npmjs.com/package/@ozonechain_orc/orc)
