@@ -1,8 +1,8 @@
-# @ozonechain/orc
+# @ozonechain_orc/orc
 
 Official JavaScript and TypeScript developer package for **Ozone Request for Comments (ORC)** standards on **[Ozone Chain](https://ozonechain.io/)**.
 
-[![npm version](https://img.shields.io/npm/v/@ozonechain/orc.svg)](https://www.npmjs.com/package/@ozonechain/orc)
+[![npm version](https://img.shields.io/npm/v/@ozonechain_orc/orc.svg)](https://www.npmjs.com/package/@ozonechain_orc/orc)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![EVM Compatible](https://img.shields.io/badge/EVM-100%25_Compatible-brightgreen.svg)](https://ozonechain.io)
 
@@ -10,7 +10,7 @@ Official JavaScript and TypeScript developer package for **Ozone Request for Com
 
 ## Overview
 
-The `@ozonechain/orc` package provides lightweight, zero-dependency, type-safe ABI definitions, constants, network parameters, and TypeScript interfaces for developing decentralized applications and tooling on Ozone Chain.
+The `@ozonechain_orc/orc` package provides lightweight, zero-dependency, type-safe ABI definitions, constants, network parameters, and TypeScript interfaces for developing decentralized applications and tooling on Ozone Chain.
 
 - **100% ERC-20 Compatibility**: Full interoperability with existing EVM wallets, AMMs, and libraries.
 - **Zero Runtime Dependencies**: Ultra-lightweight footprint suitable for frontends, backends, and embedded scripts.
@@ -21,15 +21,15 @@ The `@ozonechain/orc` package provides lightweight, zero-dependency, type-safe A
 ## Installation
 
 ```bash
-npm install @ozonechain/orc
+npm install @ozonechain_orc/orc
 ```
 
 Or using yarn / pnpm:
 
 ```bash
-yarn add @ozonechain/orc
+yarn add @ozonechain_orc/orc
 # or
-pnpm add @ozonechain/orc
+pnpm add @ozonechain_orc/orc
 ```
 
 ---
@@ -40,7 +40,7 @@ pnpm add @ozonechain/orc
 
 ```typescript
 import { createPublicClient, http } from "viem";
-import { ORC20_ABI, OZONE_CHAIN_MAINNET } from "@ozonechain/orc";
+import { ORC20_ABI, OZONE_CHAIN_MAINNET } from "@ozonechain_orc/orc";
 
 const client = createPublicClient({
   transport: http(OZONE_CHAIN_MAINNET.rpcUrls.default.http[0]),
@@ -63,7 +63,7 @@ async function getTokenBalance(tokenAddress: `0x${string}`, account: `0x${string
 
 ```typescript
 import { ethers } from "ethers";
-import { ORC20_ABI, OZONE_CHAIN_MAINNET } from "@ozonechain/orc";
+import { ORC20_ABI, OZONE_CHAIN_MAINNET } from "@ozonechain_orc/orc";
 
 const provider = new ethers.JsonRpcProvider(OZONE_CHAIN_MAINNET.rpcUrls.default.http[0]);
 
@@ -83,7 +83,7 @@ async function getDecimalsAndSymbol(tokenAddress: string) {
 ### 3. Accessing Standard Metadata & Constants
 
 ```typescript
-import { ORC_STANDARD, ORC20, OZONE_CHAIN_MAINNET } from "@ozonechain/orc";
+import { ORC_STANDARD, ORC20, OZONE_CHAIN_MAINNET } from "@ozonechain_orc/orc";
 
 console.log(ORC_STANDARD.name);       // "Ozone Request for Comments"
 console.log(ORC20.standard);          // "ORC-20"

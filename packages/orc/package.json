@@ -1,5 +1,5 @@
 {
-  "name": "@ozonechain/orc",
+  "name": "@ozonechain_orc/orc",
   "version": "1.0.0",
   "description": "Official JavaScript and TypeScript developer package for Ozone Request for Comments (ORC) standards.",
   "keywords": [
