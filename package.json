@@ -1,27 +1,26 @@
 {
-  "name": "@ozone-chain/orc-contracts",
+  "name": "orc-monorepo",
   "version": "1.0.0",
-  "description": "Official smart contract interfaces and reference implementations for Ozone Request for Comments (ORC) standards on Ozone Chain",
-  "main": "contracts/reference/ORC20.sol",
+  "private": true,
+  "description": "Ozone Request for Comments (ORC) standards repository and official developer packages",
+  "workspaces": [
+    "packages/*"
+  ],
   "directories": {
     "doc": "docs",
     "test": "test"
   },
-  "files": [
-    "contracts/**/*.sol",
-    "standards/**/*.md",
-    "README.md",
-    "LICENSE"
-  ],
   "scripts": {
-    "build": "forge build",
-    "test": "forge test",
+    "build": "npm --prefix packages/orc run build",
+    "test": "npm --prefix packages/orc test",
+    "build:contracts": "forge build",
+    "test:contracts": "forge test",
     "test:compliance": "forge test --match-contract ORC20ComplianceTest -vv",
     "test:benchmark": "forge test --match-contract ORC20BenchmarkTest --gas-report"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ozone-chain/ORC.git"
+    "url": "https://github.com/Ozone-chain/orc.git"
   },
   "keywords": [
     "ozone",
@@ -37,7 +36,7 @@
   "author": "Ozone Chain Core Architecture Team <standards@ozonechain.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Ozone-chain/ORC/issues"
+    "url": "https://github.com/Ozone-chain/orc/issues"
   },
   "homepage": "https://ozonechain.io"
 }

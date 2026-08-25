@@ -2,12 +2,68 @@
 
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-blue.svg)](LICENSE)
 [![Code License: MIT](https://img.shields.io/badge/Code_License-MIT-green.svg)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/@ozonechain/orc.svg)](https://www.npmjs.com/package/@ozonechain/orc)
 [![Ozone Chain EVM](https://img.shields.io/badge/Ozone_Chain-EVM_Compatible-blueviolet)](https://ozonechain.io/)
 [![Status](https://img.shields.io/badge/Status-Active_Standards-success)](standards/)
 
-**ORC (Ozone Request for Comments)** is the official standards and proposal framework for defining interoperable, secure, extensible, and Ozone-native technical standards for applications built on **[Ozone Chain](https://ozonechain.io/)**.
+**ORC (Ozone Request for Comments)** is the official standards, proposal framework, and developer tooling suite for **[Ozone Chain](https://ozonechain.io/)**.
 
-Inspired by established blockchain standards ecosystems (such as Ethereum's EIP/ERC framework), ORC standardizes token interfaces, smart contract protocols, wallet interaction conventions, and application interfaces while maintaining **100% compatibility with standard EVM technologies and the existing ERC-20 ecosystem**.
+Inspired by Ethereum's EIP/ERC ecosystem, ORC standardizes token interfaces, smart contract protocols, wallet interaction conventions, and developer SDKs while maintaining **100% compatibility with standard EVM technologies and the existing ERC-20 ecosystem**.
+
+---
+
+## Dual Purpose Architecture
+
+This repository houses two fundamental components of the Ozone Chain developer ecosystem:
+
+```text
+ORC Repository
+│
+├── 1. Specifications & Protocols
+│   ├── Governance & RFC Process (process/)
+│   ├── Core Standards & Roadmaps (standards/)
+│   ├── Solidity Reference Implementations (contracts/)
+│   ├── Formal Compliance Test Suites (test/)
+│   ├── Reproducible Gas Benchmarks (benchmarks/)
+│   └── Certification & Ecosystem Guidelines (certification/, docs/)
+│
+└── 2. Official Developer Package
+    └── packages/orc/
+        ▼
+        @ozonechain/orc (npm package: ABIs, types, constants & helpers)
+```
+
+---
+
+## JavaScript / TypeScript SDK (`@ozonechain/orc`)
+
+The official developer package exposes canonical ABIs, TypeScript type definitions, and chain metadata for building dApps, indexers, wallets, and scripts on Ozone Chain.
+
+### Installation
+
+```bash
+npm install @ozonechain/orc
+```
+
+### Quick Usage
+
+```typescript
+import { ORC20_ABI, OZONE_CHAIN_MAINNET, ORC_STANDARD } from "@ozonechain/orc";
+import { createPublicClient, http } from "viem";
+
+const client = createPublicClient({
+  transport: http(OZONE_CHAIN_MAINNET.rpcUrls.default.http[0]),
+});
+
+const balance = await client.readContract({
+  address: "0x...",
+  abi: ORC20_ABI,
+  functionName: "balanceOf",
+  args: ["0x..."],
+});
+```
+
+For full details, see the [Package Documentation](packages/orc/README.md).
 
 ---
 
@@ -52,18 +108,26 @@ ORC/
 │   ├── ORC20Benchmark.t.sol     # Forge gas measurement contracts
 │   └── ORC20Benchmark.md        # Reproducible gas analysis methodology
 │
-├── certification/               # Token compliance certification & badges
+├── certification/               # Token compliance certification & registry
 │   ├── CERTIFICATION.md         # Tier definitions & verification requirements
-│   ├── verify-compliance.sh     # CLI verification script
-│   └── badges/                  # Ecosystem certification badges
+│   ├── registry.json            # Registry of certified tokens
+│   └── verify-compliance.sh     # CLI verification script
 │
-└── docs/                        # Ecosystem developer documentation
-    ├── introduction.md          # Ecosystem vision and overview
-    ├── compatibility.md         # EVM & tooling compatibility matrix
-    ├── developer-guide.md       # Building and testing ORC tokens
-    ├── ecosystem-integration.md # Wallet, DEX, Explorer & Bridge integration
-    ├── certification.md         # How to verify and certify your contracts
-    └── security.md              # Smart contract security guidelines
+├── docs/                        # Ecosystem developer documentation
+│   ├── introduction.md          # Ecosystem vision and overview
+│   ├── compatibility.md         # EVM & tooling compatibility matrix
+│   ├── developer-guide.md       # Building and testing ORC tokens
+│   ├── ecosystem-integration.md # Wallet, DEX, Explorer & Bridge integration
+│   ├── certification.md         # How to verify and certify your contracts
+│   ├── security.md              # Smart contract security guidelines
+│   └── npm-release.md           # Package release process & guide
+│
+└── packages/                    # Official npm packages monorepo workspace
+    └── orc/                     # @ozonechain/orc developer SDK
+        ├── src/                 # TypeScript source code (ABIs, types, constants)
+        ├── package.json         # Package configuration & exports
+        ├── tsconfig.json        # TypeScript compiler options
+        └── README.md            # Package documentation
 ```
 
 ---
@@ -97,47 +161,38 @@ See [Certification Guide](certification/CERTIFICATION.md) for verification proce
 
 ## Quick Start for Developers
 
-### 1. Installation
-
-Clone this repository and verify test suites using Foundry:
+### 1. Smart Contract Development & Compliance Tests (Foundry)
 
 ```bash
-git clone https://github.com/Ozone-chain/ORC.git
-cd ORC
-forge install
-```
+# Clone the repository
+git clone https://github.com/Ozone-chain/orc.git
+cd orc
 
-### 2. Run Compliance Suite
-
-Run the formal ORC-20 compliance test suite against the reference implementation:
-
-```bash
+# Run compliance tests
 forge test --match-contract ORC20ComplianceTest -vv
+
+# Run gas benchmarks
+forge test --match-contract ORC20BenchmarkTest --gas-report
 ```
 
-Expected output:
-```text
-[PASS] test_ORC20_Compliance_Summary() (gas: ...)
-Logs:
-  =============================================================
-  [OZONE CHAIN] ORC-20 Compliance Suite: PASS
-  All canonical interfaces, events, and edge cases verified.
-  =============================================================
-```
-
-### 3. Run Benchmarks
-
-Measure exact gas costs for deployment, transfer, approval, and transferFrom:
+### 2. NPM Package Development & Testing
 
 ```bash
-forge test --match-contract ORC20BenchmarkTest --gas-report
+# Install dependencies
+npm install
+
+# Build @ozonechain/orc TypeScript SDK
+npm run build
+
+# Run SDK unit tests
+npm test
 ```
 
 ---
 
 ## Contributing
 
-Anyone in the Ozone Chain community can author an ORC proposal. Please review:
+Anyone in the Ozone Chain community can author an ORC proposal or contribute to developer tooling. Please review:
 1. **[ORC-1: Process and Governance](process/ORC-1.md)**
 2. **[Contributing Guide](CONTRIBUTING.md)**
 3. **[ORC Proposal Template](process/template.md)**
@@ -146,7 +201,7 @@ Anyone in the Ozone Chain community can author an ORC proposal. Please review:
 
 ## Security & Responsible Disclosure
 
-Smart contract security is paramount in the Ozone Chain ecosystem. If you discover a vulnerability within an ORC reference implementation or standard specification, please review **[SECURITY.md](SECURITY.md)** for our disclosure process.
+Smart contract and tooling security is paramount in the Ozone Chain ecosystem. If you discover a vulnerability within an ORC reference implementation, package, or standard specification, please review **[SECURITY.md](SECURITY.md)** for our disclosure process.
 
 ---
 
@@ -167,4 +222,4 @@ Smart contract security is paramount in the Ozone Chain ecosystem. If you discov
 - **Ozone Chain Website**: [https://ozonechain.io/](https://ozonechain.io/)
 - **Ozone Chain Explorer**: [https://ozonescan.io/](https://ozonescan.io/)
 - **Ozone Chain GitHub**: [https://github.com/Ozone-chain](https://github.com/Ozone-chain)
-
+- **NPM Package**: [https://www.npmjs.com/package/@ozonechain/orc](https://www.npmjs.com/package/@ozonechain/orc)
