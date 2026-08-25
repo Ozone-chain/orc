@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Ozone Reference Token",
+    "symbol": "ORC",
+    "address": "0x0000000000000000000000000000000000000000",
+    "network": "ozone-mainnet",
+    "explorerUrl": "https://ozonescan.io/",
+    "certifiedDate": "2026-08-24",
+    "tier": "ORC-20 Reference Implementation",
+    "status": "Active"
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "name": "@ozone-chain/orc-contracts",
+  "version": "1.0.0",
+  "description": "Official smart contract interfaces and reference implementations for Ozone Request for Comments (ORC) standards on Ozone Chain",
+  "main": "contracts/reference/ORC20.sol",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "files": [
+    "contracts/**/*.sol",
+    "standards/**/*.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "forge build",
+    "test": "forge test",
+    "test:compliance": "forge test --match-contract ORC20ComplianceTest -vv",
+    "test:benchmark": "forge test --match-contract ORC20BenchmarkTest --gas-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ozone-chain/ORC.git"
+  },
+  "keywords": [
+    "ozone",
+    "ozone-chain",
+    "orc",
+    "orc-20",
+    "erc-20",
+    "smart-contracts",
+    "solidity",
+    "evm",
+    "standards"
+  ],
+  "author": "Ozone Chain Core Architecture Team <standards@ozonechain.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ozone-chain/ORC/issues"
+  },
+  "homepage": "https://ozonechain.io"
+}
