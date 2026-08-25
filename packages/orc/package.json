@@ -1,0 +1,55 @@
+{
+  "name": "@ozonechain/orc",
+  "version": "1.0.0",
+  "description": "Official JavaScript and TypeScript developer package for Ozone Request for Comments (ORC) standards.",
+  "keywords": [
+    "ozone",
+    "ozonechain",
+    "orc",
+    "orc20",
+    "blockchain",
+    "ethereum",
+    "evm",
+    "erc20",
+    "web3",
+    "solidity"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ozone-chain/orc.git",
+    "directory": "packages/orc"
+  },
+  "homepage": "https://ozonechain.io/",
+  "bugs": {
+    "url": "https://github.com/Ozone-chain/orc/issues"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "node -e \"const fs = require('fs'); fs.rmSync('dist', { recursive: true, force: true });\"",
+    "test": "node --test test/package.test.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.4.0"
+  }
+}

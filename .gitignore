@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+lib/
+
+# Build Outputs
+dist/
+out/
+cache/
+broadcast/
+
+# Package archives
+*.tgz
+*.tar.gz
+
+# Environment & Secrets
+.env
+.env.local
+.npmrc
+
+# Logs & OS artifacts
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
